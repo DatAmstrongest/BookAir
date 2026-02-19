@@ -11,6 +11,6 @@ const PORT = process.env.PORT || 5000;
 app.use('/api', userRoutes);
 app.use(errorHandler);
 
-app.listen(port, () => {
-  console.log(`Server is whispering sweet nothings at http://localhost:${port}`);
+app.listen(PORT, () => {
+  console.log(`Server is whispering sweet nothings at http://localhost:${PORT}`);
 });

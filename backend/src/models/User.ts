@@ -1,3 +1,20 @@
-export default class User {
-	constructor (public name: string, public email: string, public id?: ObjectId) {}
-}
+import { Schema, model } from 'mongoose';
+import { IUser } from '../interfaces/IUser';
+
+const UserSchema = new Schema<IUser>({
+	name: {
+		type: String,
+		required: true
+	},
+	email: {
+		type: String,
+		required: true
+	},
+	createdAt: {
+		type: Date,
+		default: Date.now
+	},
+	id: {
+		type: Schema.Types.ObjectId,
+	}
+});

@@ -7,6 +7,6 @@ if podman ps -a | grep "bookingDB"; then
 		echo "Database is started"
 	fi
 else
-	podman run --detach --name bookingDB -p 5000:27017 docker.io/mongodb/mongodb-community-server:latest
+	podman run --detach --name bookingDB -p 27017:27017 docker.io/mongodb/mongodb-community-server:latest
 	echo "Database container is created and database started"
 fi

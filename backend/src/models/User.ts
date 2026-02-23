@@ -6,9 +6,21 @@ const UserSchema = new Schema<IUser>({
 		type: String,
 		required: true
 	},
+	surname: {
+		type: String,
+		required: true
+	},
 	email: {
 		type: String,
 		required: true
+	},
+	birthDate: {
+		type: Date,
+		required: true
+	},
+	password: {
+		type: Date,
+		reqiured: true
 	},
 	createdAt: {
 		type: Date,

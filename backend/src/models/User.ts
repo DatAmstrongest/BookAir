@@ -13,8 +13,7 @@ const UserSchema = new Schema<IUser>({
 	createdAt: {
 		type: Date,
 		default: Date.now
-	},
-	id: {
-		type: Schema.Types.ObjectId,
 	}
 });
+
+export const User = model<IUser>('User', UserSchema);

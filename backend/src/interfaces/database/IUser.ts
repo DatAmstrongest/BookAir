@@ -5,6 +5,6 @@ export interface IUser extends Document {
 	surname: string,
 	email: string,
 	birthDate?: Date,
-	password: Date,
+	passwordHash: string,
 	createdAt?: Date,
 }

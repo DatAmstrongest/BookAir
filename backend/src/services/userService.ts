@@ -1,5 +1,5 @@
 import { User } from '../models/User';
-import { IUser } from '../interfaces/IUser';
+import { IUser } from '../interfaces/database/IUser';
 
 export class UserService {
 	public static async getUserByEmail(email: string): Promise<IUser | null> {

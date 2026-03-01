@@ -1,15 +1,22 @@
 import { Request, Response } from 'express';
+import * as argon2 from "argon2";
+
 import { UserService } from '../services/userService';
+import {IUserDTO} from "../interfaces/request/IUserDTO"
 
 export const userController = {
-  getUser: async (req: Request, res: Response) => {
-    try {
-      const user = await UserService.getUserByEmail(req.params.email);
-      if (!user) return res.status(404).json({ message: "User not found" });
-      res.json(user);
-    } catch (error) {
-      console.log(error)
-      res.status(500).json({ message: "Server error" });
+  login: async (req: Request<{}, {}, IUserDTO>, res: Response) => {
+    const {email, password} = req.body;
+    const user = await UserService.getUserByEmail(email);
+    if(!user){
+      return res.status(401).json({ message: "Email or password is wrong" });
+    }
+    const isCorrect = await argon2.verify(user?.passwordHash, password);
+    if (isCorrect){
+      return res.status(200).json({ message: "Login successful" })
+    }
+    else{
+      return res.status(401).json({ message: "Email or password is wrong" })
     }
   }
 };

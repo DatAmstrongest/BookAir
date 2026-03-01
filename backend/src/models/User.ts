@@ -1,5 +1,5 @@
 import { Schema, model } from 'mongoose';
-import { IUser } from '../interfaces/IUser';
+import { IUser } from '../interfaces/database/IUser';
 
 const UserSchema = new Schema<IUser>({
 	name: {
@@ -18,8 +18,8 @@ const UserSchema = new Schema<IUser>({
 		type: Date,
 		required: true
 	},
-	password: {
-		type: Date,
+	passwordHash: {
+		type: String,
 		reqiured: true
 	},
 	createdAt: {

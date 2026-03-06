@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import './App.css';
 import Home from "./pages/Home.tsx";
@@ -6,12 +6,17 @@ import Register from './pages/Register.tsx';
 import Login from './pages/Login.tsx';
 
 function App() {
+  const [token, setToken] = useState();
+  if(!token) {
+    return <Login setToken={setToken} />
+  }
+
   return (
     <BrowserRouter>
       <nav>
         <Link to="/">Home</Link> |{" "}
-        <Link to="/Register">Register</Link> |{" "}
-        <Link to="/Login">Login</Link>
+        <Link to="/register">Register</Link> |{" "}
+        <Link to="/login">Login</Link>
       </nav>
       <Routes>
         <Route path="/" element={<Home />} />

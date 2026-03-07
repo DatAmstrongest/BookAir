@@ -6,7 +6,7 @@ const Login: React.FC = () => {
   const [password, setPassword] = useState<string>('');
   const [error, setError] = useState<string | null>(null);
 
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>): Promise<void> => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>): Promise<any> => {
     e.preventDefault();
     setError(null);
 
@@ -15,7 +15,7 @@ const Login: React.FC = () => {
       return;
     }
 
-    return fetch('http://localhost:5000/api/login', {
+    return fetch('http://127.0.0.1:5000/api/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

@@ -7,6 +7,7 @@ import { IRegisterDTO } from "../interfaces/request/IRegisterDTO";
 
 export const userController = {
   login: async (req: Request<{}, {}, ILoginDTO>, res: Response) => {
+    return res.status(200).json({message: "Everything is correct"})
     const {email, password} = req.body;
     const user = await UserService.getUserByEmail(email);
     if(!user){

@@ -1,0 +1,86 @@
+h2 {
+  margin-top: 40px;
+  margin-bottom: 60px;
+  font-size: 40px;
+}
+
+input {
+  font-size: 24px;
+}
+
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f4f7f6;
+}
+
+.login-form {
+  background: #ffffff;
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  height: 60%;
+  max-width: 800px;
+  text-align: center;
+}
+
+.input-group {
+  margin-bottom: 60px;
+  /* 1. Use Flexbox to center the contents of the group */
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  
+  font-size: 24px;
+}
+
+.input-group label {
+  /* 2. This ensures the label stays aligned with the 80% wide input */
+  width: 80%; 
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #333;
+  text-align: left; /* Keeps text on the left of that 80% block */
+}
+
+.input-group input {
+  width: 80%; /* Keeps the width you chose */
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.login-button {
+  width: 60%;
+  padding: 12px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 24px;
+  transition: background 0.3s;
+  margin-top: 40px;
+}
+
+.login-button:hover {
+  background-color: #0056b3;
+}
+
+.error-message {
+  color: #d9534f;
+  background: #f2dede;
+  padding: 10px;
+  border-radius: 4px;
+  margin-bottom: 15px;
+}
+
+.signup-link {
+  margin-top: 20px;
+  font-size: 0.9rem;
+}

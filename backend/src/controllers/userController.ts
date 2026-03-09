@@ -23,6 +23,6 @@ export const userController = {
   },
 
   register: async (req: Request<{}, {}, IRegisterDTO>, res: Response) => {
-
+    return res.status(200).json({message: "Everything is correct"})
   }
 };

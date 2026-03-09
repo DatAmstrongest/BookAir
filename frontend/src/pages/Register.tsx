@@ -38,7 +38,9 @@ const Register: React.FC = () => {
       },
       body: JSON.stringify({
         name: name,
+        surname: surname,
         email: email,
+        birthDate: birthDate,
         password: password
       })
     })

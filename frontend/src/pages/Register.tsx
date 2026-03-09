@@ -3,6 +3,7 @@ import './Register.css';
 
 const Register: React.FC = () => {
   const [name, setName] = useState<string>('');
+  const [surname, setSurname] = useState<string>('');
   const [email, setEmail] = useState<string>('');
   const [birthDate, setBirthDate] = useState<string>('');
   const [password, setPassword] = useState<string>('');
@@ -55,6 +56,7 @@ const Register: React.FC = () => {
   };
 
   const handleNameChange = (e: ChangeEvent<HTMLInputElement>) => setName(e.target.value);
+  const handleSurnameChange = (e: ChangeEvent<HTMLInputElement>) => setSurname(e.target.value);
   const handleEmailChange = (e: ChangeEvent<HTMLInputElement>) => setEmail(e.target.value);
   const handleBirthDateChange = (e: ChangeEvent<HTMLInputElement>) => setBirthDate(e.target.value);
   const handlePasswordChange = (e: ChangeEvent<HTMLInputElement>) => setPassword(e.target.value);
@@ -68,15 +70,15 @@ const Register: React.FC = () => {
         {error && <div className="error-message" role="alert">{error}</div>}
         {success && <div className="success-message" role="status">{success}</div>}
 
-        <div className="input-group">
-          <label htmlFor="name">Full Name</label>
-          <input
-            id="name"
-            type="text"
-            value={name}
-            onChange={handleNameChange}
-            placeholder="John Doe"
-          />
+        <div className="input-group input-group--row">
+          <div className="input-field">
+            <label htmlFor="name">Name</label>
+            <input id="name" type="text" value={name} onChange={handleNameChange} placeholder="John Doe" />
+          </div>
+          <div className="input-field">
+            <label htmlFor="surname">Surname</label>
+            <input id="surname" type="text" value={surname} onChange={handleSurnameChange} placeholder="Doe" />
+          </div>
         </div>
 
         <div className="input-group">

@@ -8,18 +8,17 @@ import { IUser } from '../interfaces/database/IUser';
 
 export const userController = {
   login: async (req: Request<{}, {}, ILoginDTO>, res: Response) => {
-    return res.status(200).json({message: "Everything is correct"})
     const {email, password} = req.body;
     const user = await UserService.getUserByEmail(email);
     if(!user){
-      return res.status(401).json({ message: "Email or password is wrong" });
+      return res.status(401).json({ error: "Email or password is wrong" });
     }
     const isCorrect = await argon2.verify(user?.passwordHash, password);
     if (isCorrect){
       return res.status(200).json({ message: "Login successful" })
     }
     else{
-      return res.status(401).json({ message: "Email or password is wrong" })
+      return res.status(401).json({ error: "Email or password is wrong" })
     }
   },
 

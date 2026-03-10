@@ -6,8 +6,10 @@ export default class UserService {
 		return await User.findOne({email}).exec();
 	}
 	
-	public static async createUser(name: string, surname: string, email:string, birthDate: Date, passwordHash: string): Promise<boolean> {
+	public static async createUser(name: string, surname: string, email:string, birthDate: Date, passwordHash: string): Promise<IUser | null> {
 			const newUser = new User({name, surname, email, birthDate, passwordHash});
 			newUser.save()
+			return newUser;
+
 	}
 }

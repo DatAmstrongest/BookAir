@@ -1,10 +1,13 @@
 import React, { useState, ChangeEvent, FormEvent } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Login.css';
 
 const Login: React.FC = () => {
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [error, setError] = useState<string | null>(null);
+
+  const navigate = useNavigate();
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>): Promise<any> => {
     e.preventDefault();
@@ -26,6 +29,14 @@ const Login: React.FC = () => {
       })
     })
     .then(data => data.json())
+    .then(result => {
+        if (result.error) {
+          setError(result.error);
+        } 
+      })
+      .catch(() => {
+        setError('Something went wrong. Please try again.');
+      });
   };
 
   const handleEmailChange = (e: ChangeEvent<HTMLInputElement>) => setEmail(e.target.value);

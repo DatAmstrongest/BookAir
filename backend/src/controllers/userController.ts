@@ -1,10 +1,10 @@
 import { Request, Response } from 'express';
 import * as argon2 from "argon2";
 
-import { UserService } from '../services/userService';
+import UserService from '../services/userService';
 import { ILoginDTO } from "../interfaces/request/ILoginDTO"
 import { IRegisterDTO } from "../interfaces/request/IRegisterDTO";
-import { User }from '../models/User';
+import { IUser } from '../interfaces/database/IUser';
 
 export const userController = {
   login: async (req: Request<{}, {}, ILoginDTO>, res: Response) => {
@@ -25,15 +25,20 @@ export const userController = {
 
   register: async (req: Request<{}, {}, IRegisterDTO>, res: Response) => {
     const { name, surname, email, password, birthDate} = req.body;
-    const existing = await User.findOne({ email });
+    const existing = await UserService.getUserByEmail(email);
     if (existing) {
       return res.status(400).json({ error: 'Email already in use' });
     }
 
     const passwordHash = await argon2.hash(password);
-    const user = new User({ name, surname, email, birthDate, passwordHash });
-    await user.save();
+    try{
+      const newUser = await UserService.createUser(name, surname, email, birthDate, passwordHash )
+      res.status(201).json({ message: 'User created', userId: newUser!._id });
+    }
+    catch{
+      res.status(404).json({ message: 'Something went wrong'});
 
-    res.status(201).json({ message: 'User created', userId: user._id });
+    }
+
   }
 };

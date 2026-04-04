@@ -1,5 +1,6 @@
-import express, { Request, Response } from 'express';
+import express, { Application } from 'express';
 import userRoutes from './routes/userRoutes';
+import bookingRoutes from './routes/bookingRoutes';
 import errorHandler from './middlewares/errorHandler';
 import dotenv from 'dotenv';
 import connectDB from './config/db'
@@ -25,6 +26,7 @@ connectDB();
 
 
 app.use('/api', userRoutes);
+app.use('/api/bookings', bookingRoutes);
 app.use(errorHandler);
 
 app.listen(PORT, () => {

@@ -1,3 +1,16 @@
+:root {
+  /* Color Hunt — https://colorhunt.co/palette/f9f7f7dbe2ef3f72af112d4e */
+  --palette-cream: #f9f7f7;
+  --palette-sky: #dbe2ef;
+  --palette-blue: #3f72af;
+  --palette-navy: #112d4e;
+  --palette-blue-hover: #356599;
+  --palette-error-text: #8b2942;
+  --palette-error-bg: #f3e4e8;
+  --palette-success-text: #1e4d2b;
+  --palette-success-bg: #e4ede6;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -5,9 +18,32 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: var(--palette-cream);
+  color: var(--palette-navy);
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.page-shell {
+  max-width: 42rem;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 3rem;
+}
+
+.page-shell h1 {
+  margin: 0 0 0.75rem;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--palette-navy);
+  letter-spacing: -0.02em;
+}
+
+.page-shell p {
+  margin: 0;
+  line-height: 1.6;
+  color: var(--palette-navy);
+  opacity: 0.85;
 }

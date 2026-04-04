@@ -50,6 +50,25 @@
   background: var(--palette-sky);
 }
 
+.app-nav__logout {
+  margin: 0;
+  padding: 0.5rem 0.9rem;
+  border: none;
+  border-radius: 8px;
+  font: inherit;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--palette-sky);
+  background: transparent;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.app-nav__logout:hover {
+  color: var(--palette-cream);
+  background: rgba(219, 226, 239, 0.12);
+}
+
 .app-main {
   min-height: calc(100vh - 3.25rem);
 }

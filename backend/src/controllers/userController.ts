@@ -4,7 +4,7 @@ import * as argon2 from "argon2";
 import UserService from '../services/userService';
 import { ILoginDTO } from "../interfaces/request/ILoginDTO"
 import { IRegisterDTO } from "../interfaces/request/IRegisterDTO";
-import { IUser } from '../interfaces/database/IUser';
+import { signAccessToken } from '../utils/token';
 
 export const userController = {
   login: async (req: Request<{}, {}, ILoginDTO>, res: Response) => {
@@ -13,9 +13,19 @@ export const userController = {
     if(!user){
       return res.status(401).json({ error: "Email or password is wrong" });
     }
-    const isCorrect = await argon2.verify(user?.passwordHash, password);
-    if (isCorrect){
-      return res.status(200).json({ message: "Login successful" })
+    const isCorrect = await argon2.verify(user.passwordHash, password);
+    if (isCorrect) {
+      let token: string;
+      try {
+        token = signAccessToken(String(user._id), user.email);
+      } catch {
+        return res.status(500).json({ error: 'Server configuration error' });
+      }
+      return res.status(200).json({
+        message: 'Login successful',
+        token,
+        user: { email: user.email },
+      });
     }
     else{
       return res.status(401).json({ error: "Email or password is wrong" })
